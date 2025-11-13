@@ -65,10 +65,11 @@ class Config:
         {'min_lat': -11.0, 'max_lat': -1.0, 'min_lon': 140.0, 'max_lon': 155.0}
     ]
     
+    # SESUAIKAN DENGAN STRUKTUR REPO ANDA
     PARQUET_FILES = {
-        'matched': 'src/esb_3pulau_ultra_precise_matches.parquet',
-        'esb': 'src/Tarikan_data_ESB_3_Pulau_2025.parquet', 
-        'scraping': 'src/data_3_pulau_final.parquet'
+        'matched': 'esb_3pulau_ultra_precise_matches.parquet',
+        'esb': 'Tarikan_data_ESB_3_Pulau_2025.parquet', 
+        'scraping': 'data_3_pulau_final.parquet'
     }
 
 def is_in_forbidden_area(lat, lon):
@@ -535,9 +536,9 @@ def main():
     
     if len(available_files) < 3:
         st.sidebar.error("❌ Dataset 3 Pulau tidak lengkap")
-        st.sidebar.info("Pastikan file berikut ada di folder `src/`:")
+        st.sidebar.info("Pastikan file berikut ada di root folder:")
         for file_type, file_path in Config.PARQUET_FILES.items():
-            st.sidebar.write(f"- {os.path.basename(file_path)}")
+            st.sidebar.write(f"- {file_path}")
         return
     
     st.sidebar.success("✅ Dataset 3 Pulau tersedia!")
